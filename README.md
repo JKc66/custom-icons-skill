@@ -17,6 +17,8 @@ To add this skill to your agent environment, run:
 npx skills add jkc66/custom-icons-skill
 ```
 
+or
+
 ```
 bunx skills add jkc66/custom-icons-skill
 ```
