@@ -3,7 +3,7 @@ import argparse
 from PIL import Image, ImageOps
 from pathlib import Path
 
-def process_icon(source_path, output_dir, name, threshold=180, chroma_key=None):
+def process_icon(source_path, output_dir, name, threshold=180, chroma_key=None, tolerance=60, padding=12):
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     
@@ -22,12 +22,12 @@ def process_icon(source_path, output_dir, name, threshold=180, chroma_key=None):
         for item in data:
             # Check if color is close to chroma key (allowing some tolerance)
             # Default for green screen: (0, 255, 0)
-            if abs(item[0] - chroma_key[0]) < 60 and abs(item[1] - chroma_key[1]) < 60 and abs(item[2] - chroma_key[2]) < 60:
+            if abs(item[0] - chroma_key[0]) < tolerance and abs(item[1] - chroma_key[1]) < tolerance and abs(item[2] - chroma_key[2]) < tolerance:
                 new_data.append((0, 0, 0, 0)) # Transparent
             else:
                 new_data.append(item)
         im.putdata(new_data)
-        print(f"✨ Chroma key removed: {chroma_key}")
+        print(f"✨ Chroma key removed: {chroma_key} (Tolerance: {tolerance})")
 
     # 2. Bounding Box & Crop
     # Convert to grayscale for mask (using alpha for transparency aware crop if chroma keyed)
@@ -40,13 +40,12 @@ def process_icon(source_path, output_dir, name, threshold=180, chroma_key=None):
         bbox = mask.getbbox()
     
     if bbox:
-        pad = 12
         l, t, r, b = bbox
         im = im.crop((
-            max(0, l - pad), 
-            max(0, t - pad), 
-            min(im.width, r + pad), 
-            min(im.height, b + pad)
+            max(0, l - padding), 
+            max(0, t - padding), 
+            min(im.width, r + padding), 
+            min(im.height, b + padding)
         ))
     
     # 3. Save Output PNG
@@ -71,10 +70,10 @@ if __name__ == "__main__":
     parser.add_argument("name", help="Base name for the output files")
     parser.add_argument("--threshold", type=int, default=180, help="Threshold for binarization (default: 180)")
     parser.add_argument("--chroma", action="store_true", help="Remove green background (#00FF00)")
+    parser.add_argument("--tolerance", type=int, default=60, help="Tolerance for chroma keying (default: 60)")
+    parser.add_argument("--padding", type=int, default=12, help="Padding around the icon (default: 12)")
     
     args = parser.parse_args()
     
     key = (0, 255, 0) if args.chroma else None
-    process_icon(args.source, args.output_dir, args.name, args.threshold, chroma_key=key)
-
-
+    process_icon(args.source, args.output_dir, args.name, args.threshold, chroma_key=key, tolerance=args.tolerance, padding=args.padding)

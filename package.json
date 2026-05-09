@@ -1,0 +1,11 @@
+{
+  "name": "custom-icons-skill",
+  "version": "1.0.0",
+  "description": "Professional workflow for creating bespoke vector icons.",
+  "scripts": {
+    "optimize": "svgo src/assets/icons/*.svg --multipass"
+  },
+  "devDependencies": {
+    "svgo": "^3.0.0"
+  }
+}
