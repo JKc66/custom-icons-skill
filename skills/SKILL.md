@@ -35,16 +35,46 @@ Use discovery only when the request is underspecified. If the user has not provi
 ### Phase 2: Generation & Strategy Selection
 For each icon, decide on the technical strategy based on complexity:
 
+#### Prompt Construction Rules
+Use a concise, labeled prompt spec for generation rather than a loose paragraph. Preserve the user's requirements first, and add only practical detail that improves icon output.
+
+Recommended order:
+1. **Asset type**: icon asset for the user's target environment.
+2. **Primary request**: exact subject or concept.
+3. **Style/medium**: requested style plus the selected strategy.
+4. **Composition/framing**: centered, clear silhouette, generous padding.
+5. **Color palette**: user-specified colors or category color.
+6. **Constraints**: no text unless requested, no logos/trademarks, no watermark, no extra elements.
+
+For existing image/reference workflows, label each image by role: `Image 1: edit target`, `Image 2: style reference`, etc. If preserving an existing icon or drawing, repeat the invariants in every iteration: preserve layout, proportions, silhouette, and intended subject; change only the requested aspect.
+
 #### Strategy A: Vector (Monochrome/Simple)
 *Use for: Logos, UI icons, line art.*
-1.  **Generate**: "Minimalist [SUBJECT] icon, high-contrast black on pure white background. [STYLE]. No fills, no gradients. Isolated on white."
+1.  **Generate**:
+    ```text
+    Asset type: scalable UI icon
+    Primary request: [SUBJECT]
+    Style/medium: [STYLE], high-contrast black vector-like line art
+    Composition/framing: centered icon, clear silhouette, generous padding
+    Color palette: black on pure white background
+    Constraints: no fills unless requested; no gradients; no text; no logos or trademarks; no watermark; no extra elements
+    ```
 2.  **Process**: Binarize the generated image, trace it with `potrace`, and optimize it with `svgo`.
 3.  **Rule**: Do not hand-author final SVG path data for new Strategy A icons unless the user explicitly asks for a deterministic/manual SVG. The default output must come from the generated image -> `scripts/crop_and_trace.py` -> `potrace` -> `svgo` pipeline.
 4.  **Color**: If the user specifies a color, apply that color after tracing. If updating the reference gallery and no color is specified, use the category color.
 
 #### Strategy B: Raster (Complex/Multi-color)
 *Use for: Detailed illustrations, 3D icons, colorful assets.*
-1.  **Generate**: "[SUBJECT] icon, vibrant colors, [STYLE]. **Pure green background (#00FF00)**. No shadows, no reflections, isolated subject, generous padding."
+1.  **Generate**:
+    ```text
+    Asset type: transparent raster icon
+    Primary request: [SUBJECT]
+    Style/medium: [STYLE], vibrant detailed icon
+    Composition/framing: centered isolated subject, clear silhouette, generous padding
+    Scene/backdrop: perfectly flat solid chroma-key background, usually #00ff00
+    Constraints: background must be one uniform color with no shadows, gradients, texture, reflections, floor plane, or lighting variation; crisp edges; no halos; no text unless requested; no logos or trademarks; no watermark; no extra elements; do not use the chroma-key color anywhere in the subject
+    ```
+    Use `#ff00ff` instead of `#00ff00` when the subject is green or likely to contain green.
 2.  **Logic**: Background removed via chroma-keying to create a transparent PNG.
 3.  **Rule**: Keep Strategy B outputs as transparent PNG/WebP unless the user explicitly asks for another format.
 

@@ -1,6 +1,13 @@
 # 🎨 Custom Icons Skill
 
+![Skill](https://img.shields.io/badge/Skill-Custom%20Icons-7c3aed?style=for-the-badge&logo=sparkfun&logoColor=white)
+![Codex](https://img.shields.io/badge/Tested%20in-Codex-111827?style=for-the-badge&logo=openai&logoColor=white)
+![Antigravity](https://img.shields.io/badge/Tested%20in-Antigravity-4285f4?style=for-the-badge&logo=google&logoColor=white)
+![Icons](https://img.shields.io/badge/Output-SVG%20%2B%20PNG-10b981?style=for-the-badge&logo=svg&logoColor=white)
+
 A specialized skill for creating and managing bespoke icons using AI generation, conceptual design, and vector tracing.
+
+Tested with Codex and Antigravity.
 
 ## 🚀 Installation
 
