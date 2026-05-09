@@ -16,11 +16,7 @@ npx skills add jkc66/custom-icons-skill
 Use the instructions in [skill.md](skills/skill.md) to generate artwork or refine a conceptual "desire".
 
 ### 2. Process Image
-Prepare the image for tracing:
-
-```bash
-python3 scripts/crop_and_trace.py path/to/source.png tmp/icons my-new-icon
-```
+Follow the Strategy A or Strategy B pipeline in [skill.md](skills/skill.md). Reference gallery assets live in `skills/icons/`.
 
 ### 3. Trace to SVG
 Ensure `potrace` is installed:
@@ -39,8 +35,8 @@ bunx svgo src/assets/icons/my-new-icon.svg --multipass
 ## 📂 Structure
 
 - `skills/skill.md`: Core logic and instructions for the AI agent.
-- `scripts/`: Automation and processing utilities.
-- `resources/icons/`: Categorized reference gallery.
+- `skills/scripts/`: Processing utilities used by the skill.
+- `skills/icons/`: Categorized reference gallery.
 
 ---
 
@@ -53,39 +49,34 @@ Explore the different styles supported by this skill:
 
 | | | | | |
 | :---: | :---: | :---: | :---: | :---: |
-| <img src="./resources/icons/premium/quality.svg" width="200" /> | <img src="./resources/icons/premium/design.svg" width="200" /> | <img src="./resources/icons/premium/experience.svg" width="200" /> | <img src="./resources/icons/premium/installation.svg" width="200" /> | <img src="./resources/icons/premium/warranty.svg" width="200" /> |
+| <img src="./skills/icons/premium/quality.svg" width="200" /> | <img src="./skills/icons/premium/design.svg" width="200" /> | <img src="./skills/icons/premium/experience.svg" width="200" /> | <img src="./skills/icons/premium/installation.svg" width="200" /> | <img src="./skills/icons/premium/warranty.svg" width="200" /> |
 
 
 ### 🤖 Tech (Strategy A)
 *Geometric, bold, 2px stroke weight.*
 
-| | | |
-| :---: | :---: | :---: |
-| <img src="./resources/icons/tech/chip.svg" width="200" /> | <img src="./resources/icons/tech/cloud.svg" width="200" /> | <img src="./resources/icons/tech/code.svg" width="200" /> |
+| | | | | |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="./skills/icons/tech/chip.svg" width="200" /> | <img src="./skills/icons/tech/cloud.svg" width="200" /> | <img src="./skills/icons/tech/code.svg" width="200" /> | <img src="./skills/icons/tech/security.svg" width="200" /> | <img src="./skills/icons/tech/database.svg" width="200" /> |
 
 ### 🌿 Lifestyle (Strategy A)
 *Organic, hand-drawn, textured edges.*
 
-| | |
-| :---: | :---: |
-| <img src="./resources/icons/lifestyle/leaf.svg" width="200" /> | <img src="./resources/icons/lifestyle/flower.svg" width="200" /> |
+| | | | | |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="./skills/icons/lifestyle/leaf.svg" width="200" /> | <img src="./skills/icons/lifestyle/flower.svg" width="200" /> | <img src="./skills/icons/lifestyle/sun.svg" width="200" /> | <img src="./skills/icons/lifestyle/tree.svg" width="200" /> | <img src="./skills/icons/lifestyle/wave.svg" width="200" /> |
 
 ### 🏛 Detailed (Strategy A)
 *Intricate, high-detail vector art.*
 
-| |
-| :---: |
-| <img src="./resources/icons/detailled/museum.svg" width="200" /> |
+| | | | | |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="./skills/icons/detailled/museum.svg" width="200" /> | <img src="./skills/icons/detailled/library.svg" width="200" /> | <img src="./skills/icons/detailled/theater.svg" width="200" /> | <img src="./skills/icons/detailled/cathedral.svg" width="200" /> | <img src="./skills/icons/detailled/observatory.svg" width="200" /> |
 
 ### 🌈 Complex (Strategy B)
 *3D, multi-color, transparent PNGs (Green Screen workflow).*
 
-| | |
-| :---: | :---: |
-| <img src="./resources/icons/3D/cube.png" width="200" /> | <img src="./resources/icons/3D/residence.webp" width="200" /> |
-
-
-
-
-
+| | | | | |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="./skills/icons/3D/cube.png" width="200" /> | <img src="./skills/icons/3D/residence.webp" width="200" /> | <img src="./skills/icons/3D/rocket.png" width="200" /> | <img src="./skills/icons/3D/robot.png" width="200" /> | <img src="./skills/icons/3D/balloon.png" width="200" /> |
 
