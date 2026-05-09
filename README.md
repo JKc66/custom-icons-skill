@@ -70,11 +70,18 @@ Explore the different styles supported by this skill:
 | :---: | :---: |
 | <img src="./resources/icons/lifestyle/leaf.svg" width="200" /> | <img src="./resources/icons/lifestyle/flower.svg" width="200" /> |
 
-### 🌈 Complex (Strategy B)
-*3D, multi-color, transparent PNGs (Green Screen workflow).*
+### 🏛 Detailed (Strategy A)
+*Intricate, high-detail vector art.*
 
 | |
 | :---: |
+| <img src="./resources/icons/detailled/museum.svg" width="200" /> |
+
+### 🌈 Complex (Strategy B)
+*3D, multi-color, transparent PNGs (Green Screen workflow).*
+
+| | |
+| :---: | :---: |
 | <img src="./resources/icons/3D/cube.png" width="200" /> | <img src="./resources/icons/3D/residence.webp" width="200" /> |
 
 
