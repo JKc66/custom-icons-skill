@@ -8,16 +8,6 @@ description: "Professional workflow for creating bespoke vector and complex rast
 
 A master workflow for crafting professional-grade iconography. This skill handles the entire pipeline: from conceptual "desire" and visual "design" to technical "path" refinement, transparent 3D PNG cleanup, and production-ready SVG optimization.
 
-## 🚀 Installation
-
-To integrate this skill into your environment:
-
-```bash
-npx skills add jkc66/custom-icons-skill
-```
-
----
-
 ## 🤖 Agent Instructions (Strict Workflow)
 
 When this skill is activated, you MUST follow this step-by-step interaction protocol:
@@ -47,7 +37,7 @@ For each icon, decide on the technical strategy based on complexity:
 *Use for: Logos, UI icons, line art.*
 1.  **Generate**: "Minimalist [SUBJECT] icon, high-contrast black on pure white background. [STYLE]. No fills, no gradients. Isolated on white."
 2.  **Process**: Binarize the generated image, trace it with `potrace`, and optimize it with `svgo`.
-3.  **Rule**: Do not hand-author final SVG path data for new Strategy A icons unless the user explicitly asks for a deterministic/manual SVG. The default output must come from the generated image -> `skills/scripts/crop_and_trace.py` -> `potrace` -> `svgo` pipeline.
+3.  **Rule**: Do not hand-author final SVG path data for new Strategy A icons unless the user explicitly asks for a deterministic/manual SVG. The default output must come from the generated image -> `scripts/crop_and_trace.py` -> `potrace` -> `svgo` pipeline.
 4.  **Color**: If the user specifies a color, apply that color after tracing. If updating the reference gallery and no color is specified, use the category color.
 
 #### Strategy B: Raster (Complex/Multi-color)
@@ -61,7 +51,7 @@ For each icon, decide on the technical strategy based on complexity:
 ### Phase 3: Processing & Tracing
 
 #### For Strategy A (Vector):
-1.  **Binarize**: `python3 skills/scripts/crop_and_trace.py <source> tmp/output <name>`
+1.  **Binarize**: `python3 scripts/crop_and_trace.py <source> tmp/output <name>`
 2.  **Trace**: `potrace "tmp/output/<name>.pbm" --svg --flat -o "src/assets/icons/<name>.svg"`
 3.  **Optimize**: `bunx svgo "src/assets/icons/<name>.svg"`
 4.  **Color**: After tracing, apply the target category fill/stroke color to the optimized SVG only as a mechanical tinting step.
@@ -70,9 +60,9 @@ For each icon, decide on the technical strategy based on complexity:
 #### For Strategy B (Complex):
 1.  **Remove Green Screen** with the advanced chroma-key utility:
     ```bash
-    python3 skills/scripts/remove_chroma_key.py \
+    python3 scripts/remove_chroma_key.py \
       --input <source> \
-      --out skills/icons/3D/<name>.png \
+      --out icons/3D/<name>.png \
       --auto-key border \
       --soft-matte \
       --spill-cleanup \
@@ -83,11 +73,11 @@ For each icon, decide on the technical strategy based on complexity:
 
 2.  **Alternative Trim Workflow**:
     ```bash
-    python3 skills/scripts/crop_and_trace.py <source> skills/icons/3D <name> \
+    python3 scripts/crop_and_trace.py <source> icons/3D <name> \
       --chroma \
       --padding 12
     ```
-    *Result: Creates a transparent, trimmed PNG at `skills/icons/3D/<name>.png`. Use this when trimming is more important than soft matte cleanup.*
+    *Result: Creates a transparent, trimmed PNG at `icons/3D/<name>.png`. Use this when trimming is more important than soft matte cleanup.*
 
 3.  **Validate Alpha**: Check that the output has transparent corners, no green fringe, and a clear subject silhouette. If a fringe remains after the advanced utility, retry once with `--edge-contract 1`; if edges look too hard, use a smaller feather such as `--edge-feather 0.25`.
 
@@ -136,6 +126,6 @@ For each icon, decide on the technical strategy based on complexity:
 
 ## 📚 Resources & Utilities
 
-- **Vector/Trim Script**: `./skills/scripts/crop_and_trace.py`
-- **Advanced Chroma-Key Script**: `./skills/scripts/remove_chroma_key.py`
-- **Reference Gallery**: `./skills/icons/` (Categorized by: `premium`, `tech`, `lifestyle`, `detailled`, `3D`)
+- **Vector/Trim Script**: `./scripts/crop_and_trace.py`
+- **Advanced Chroma-Key Script**: `./scripts/remove_chroma_key.py`
+- **Reference Gallery**: `./icons/` (Categorized by: `premium`, `tech`, `lifestyle`, `detailled`, `3D`)

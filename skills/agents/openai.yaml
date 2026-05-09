@@ -1,0 +1,4 @@
+interface:
+  display_name: "Custom Icons"
+  short_description: "Create bespoke SVG and 3D icon assets"
+  default_prompt: "Use $custom-icons to create a cohesive custom icon set for my project."

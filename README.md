@@ -8,15 +8,17 @@ To add this skill to your agent environment, run:
 
 ```bash
 npx skills add jkc66/custom-icons-skill
+
+bunx skills add jkc66/custom-icons-skill
 ```
 
 ## 🛠 Usage
 
 ### 1. Generate or Design
-Use the instructions in [skill.md](skills/skill.md) to generate artwork or refine a conceptual "desire".
+Use the instructions in [SKILL.md](skills/SKILL.md) to generate artwork or refine a conceptual "desire".
 
 ### 2. Process Image
-Follow the Strategy A or Strategy B pipeline in [skill.md](skills/skill.md). Reference gallery assets live in `skills/icons/`.
+Follow the Strategy A or Strategy B pipeline in [SKILL.md](skills/SKILL.md). Reference gallery assets live in `skills/icons/`.
 
 ### 3. Trace to SVG
 Ensure `potrace` is installed:
@@ -34,7 +36,7 @@ bunx svgo src/assets/icons/my-new-icon.svg --multipass
 
 ## 📂 Structure
 
-- `skills/skill.md`: Core logic and instructions for the AI agent.
+- `skills/SKILL.md`: Core logic and instructions for the AI agent.
 - `skills/scripts/`: Processing utilities used by the skill.
 - `skills/icons/`: Categorized reference gallery.
 
@@ -79,4 +81,3 @@ Explore the different styles supported by this skill:
 | | | | | |
 | :---: | :---: | :---: | :---: | :---: |
 | <img src="./skills/icons/3D/cube.png" width="200" /> | <img src="./skills/icons/3D/residence.webp" width="200" /> | <img src="./skills/icons/3D/rocket.png" width="200" /> | <img src="./skills/icons/3D/robot.png" width="200" /> | <img src="./skills/icons/3D/balloon.png" width="200" /> |
-
