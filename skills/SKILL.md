@@ -1,6 +1,6 @@
 ---
-name: custom-icons
-description: "Professional workflow for creating bespoke vector and complex raster icons. Supports Design (visual), Path (vector-driven), Desire (conceptual), and 3D/complex chroma-key modes. Features AI prompt engineering, automated binarization, improved alpha cleanup, and SVG optimization."
+name: custom-icons-skill
+description: "Professional workflow for creating bespoke vector and complex raster icons. Professional icon design workflow including Design (visual), Path (vector), Desire (conceptual), and 3D chroma-key modes. Features AI prompt engineering, automated binarization, alpha cleanup, and SVG optimization."
 ---
 
 
@@ -15,38 +15,63 @@ When this skill is activated, you MUST follow this step-by-step interaction prot
 ### Phase 0: User Intent Comes First
 Follow the user's explicit request over defaults in this skill.
 
-- If the user gives subjects, style, output type, destination, colors, or framework, use those exact requirements.
-- Do not substitute a different pipeline, format, style, subject, palette, or destination because it seems easier.
+- If the user provides specific subjects, style, output type, destination, colors, or framework, use those exact details as provided. If any detail is missing, request clarification.
+- If the user's input contains conflicting or invalid details, clarify the conflict and request correction before proceeding. This takes priority over following the input strictly.
+- If the user requests an unsupported format or style, inform them of the limitation and suggest alternatives.
+- Do not substitute a different pipeline, format, style, subject, palette, or destination because it seems easier than the user's valid request.
 - Do not hand-author final Strategy A SVGs unless the user explicitly asks for manual/deterministic SVG code.
 - Do not convert a Strategy B/3D request into SVG unless the user explicitly asks for SVG.
 - Do not ask setup questions when the user has already provided enough information to proceed.
-- Ask a concise clarifying question only when a missing detail would change the output format, subject list, destination, or strategy.
+- Ask a concise clarifying question only when a missing detail prevents accurate determination of the output format, subject list, destination, or strategy selection.
 - If the user asks to update this skill or its gallery, preserve existing conventions unless the user asks to change them.
 - Use a visible project-local temporary workspace for generated sources, masks, traces, and intermediate outputs: `tmp/custom-icons/<request-or-icon-name>/`.
-- Do not delete the temporary workspace or intermediate files unless the user explicitly asks for cleanup. Report the temp path so the user can inspect the work later.
+- Do not delete the temporary workspace or intermediate files unless the user explicitly asks for cleanup. Final assets should be copied to the target destination; intermediate files should remain in the `tmp/` workspace as a reference until an explicit cleanup request is received.
 
 ### Phase 1: Discovery & Style Definition
-Use discovery only when the request is underspecified. If the user has not provided enough detail, ask for the minimum missing information:
+Use discovery only when the request has missing required information. If the user input is incomplete, ask for the minimum missing information:
 
 1.  **Style**: What style of icon? (e.g., 3D-effect, Flat, Monoline, Luxury Engraved, Minimalist).
 2.  **Subjects**: What icons or desire should be represented?
 3.  **Target environment**: Where will the icons be used? (e.g., Astro, React, Mobile App).
 
 ### Phase 2: Generation & Strategy Selection
-For each icon, decide on the technical strategy based on complexity:
+For each icon, select a strategy based on the visual complexity:
+
+#### Strategy Selection Flowchart
+1.  **Analyze Request**: Check subject complexity and color requirements.
+    -   If the request mixes Strategy A and Strategy B features, clarify which to prioritize or suggest splitting the task.
+2.  **Select Strategy**:
+    -   **Strategy A (Vector)**: Use for monochrome logos, UI icons, or simple line art.
+    -   **Strategy B (Raster)**: Use for 3D icons, multi-color assets, or detailed illustrations.
+3.  **Confirm Pipeline**:
+    -   Strategy A -> Binarization -> Potrace -> SVGO.
+    -   Strategy B -> Chroma-Key -> Transparent PNG/WebP.
+
+| Strategy | Recommended Use Cases | Technical Pipeline |
+| :--- | :--- | :--- |
+| **Strategy A (Vector)** | Logos, UI icons, line art, monochrome | Image -> Binarization -> Potrace -> SVGO |
+| **Strategy B (Raster)** | 3D icons, multi-color, detailed illustration | Image -> Chroma-Key -> Transparent PNG/WebP |
 
 #### Prompt Construction Rules
-Use a concise, labeled prompt spec for generation rather than a loose paragraph. Preserve the user's requirements first, and add only practical detail that improves icon output.
+Use a concise, labeled prompt spec for generation.
 
-Recommended order:
+##### Content Constraints
 1. **Asset type**: icon asset for the user's target environment.
 2. **Primary request**: exact subject or concept.
 3. **Style/medium**: requested style plus the selected strategy.
 4. **Composition/framing**: centered, clear silhouette, generous padding.
 5. **Color palette**: user-specified colors or category color.
-6. **Constraints**: no text unless requested, no logos/trademarks, no watermark, no extra elements.
 
-For existing image/reference workflows, label each image by role: `Image 1: edit target`, `Image 2: style reference`, etc. If preserving an existing icon or drawing, repeat the invariants in every iteration: preserve layout, proportions, silhouette, and intended subject; change only the requested aspect.
+##### Visual Constraints
+- **No text**: unless explicitly requested.
+- **Cleanliness**: No logos, trademarks, or watermarks.
+- **Isolation**: No extra elements or complex backgrounds.
+
+##### Examples
+- *Vector*: "A monoline coffee cup icon, black on white, minimal."
+- *Raster*: "3D isometric computer icon, vibrant colors, #00ff00 background."
+
+For existing image/reference workflows, label each image by role: `Image 1: edit target`, `Image 2: style reference`, etc.
 
 #### Strategy A: Vector (Monochrome/Simple)
 *Use for: Logos, UI icons, line art.*
@@ -74,7 +99,7 @@ For existing image/reference workflows, label each image by role: `Image 1: edit
     Scene/backdrop: perfectly flat solid chroma-key background, usually #00ff00
     Constraints: background must be one uniform color with no shadows, gradients, texture, reflections, floor plane, or lighting variation; crisp edges; no halos; no text unless requested; no logos or trademarks; no watermark; no extra elements; do not use the chroma-key color anywhere in the subject
     ```
-    Use `#ff00ff` instead of `#00ff00` when the subject is green or likely to contain green.
+    Use `#ff00ff` instead of `#00ff00` when the subject contains significant green elements or a predominantly green color scheme.
 2.  **Logic**: Background removed via chroma-keying to create a transparent PNG.
 3.  **Rule**: Keep Strategy B outputs as transparent PNG/WebP unless the user explicitly asks for another format.
 
@@ -89,7 +114,12 @@ Before processing, create a project-local workspace for the request:
 mkdir -p tmp/custom-icons/<request-or-icon-name>
 ```
 
-Save generated source images, cropped PNGs, PBM files, traced SVG drafts, validation snapshots, and alternate attempts in that folder. Use the user's requested destination only for final delivered assets; if no final destination is provided, leave the final assets in the same `tmp/custom-icons/<request-or-icon-name>/` workspace.
+Save generated source images, cropped PNGs, PBM files, traced SVG drafts, validation snapshots, and alternate attempts in that folder. Use the user's requested destination only for final delivered assets; if no final destination is provided, leave the final assets in the same `tmp/custom-icons/<request-or-icon-name>/` workspace. 
+
+- **Input Validation**: If the provided final destination path is invalid, or if the user provides an unsupported file format for input, notify the user and request a valid path/format before proceeding.
+
+#### Error Handling
+If any processing step fails (binarization, tracing, chroma-keying), report the specific error to the user and suggest corrective actions (e.g., retrying with adjusted parameters, checking file formats).
 
 #### For Strategy A (Vector):
 1.  **Binarize**: `python3 scripts/crop_and_trace.py <source> tmp/custom-icons/<request-or-icon-name> <name>`
@@ -167,7 +197,6 @@ Save generated source images, cropped PNGs, PBM files, traced SVG drafts, valida
 
 ---
 
-## 📚 Resources & Utilities
-
-- **Vector/Trim Script**: `./scripts/crop_and_trace.py`
-- **Advanced Chroma-Key Script**: `./scripts/remove_chroma_key.py`
+### Scripts
+- **Vector/Trim Script**: [scripts/crop_and_trace.py](scripts/crop_and_trace.py)
+- **Advanced Chroma-Key Script**: [scripts/remove_chroma_key.py](scripts/remove_chroma_key.py)
