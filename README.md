@@ -5,7 +5,7 @@
 ![Antigravity](https://img.shields.io/badge/Tested%20in-Antigravity-4285f4?style=for-the-badge&logo=google&logoColor=white)
 ![Icons](https://img.shields.io/badge/Output-SVG%20%2B%20PNG-10b981?style=for-the-badge&logo=svg&logoColor=white)
 
-A specialized skill for creating and managing bespoke icons using AI generation, conceptual design, and vector tracing.
+A specialized agent skill for creating cohesive custom icons as native or traced SVGs and transparent PNG/WebP assets. It combines explicit format routing, reusable generation prompts, deterministic processing scripts, and structural plus visual validation.
 
 Tested with Codex and Antigravity.
 
@@ -25,37 +25,63 @@ bunx skills add jkc66/custom-icons-skill
 
 ## 🛠 Usage
 
-### 1. Generate or Design
-Use the instructions in [SKILL.md](skills/SKILL.md) to generate artwork or refine a conceptual "desire".
+Invoke the installed skill with a concrete request, for example:
 
-### 2. Process Image
-Follow the Strategy A or Strategy B pipeline in [SKILL.md](skills/SKILL.md). Reference gallery assets live in `readme-assets/icons/`.
-
-### 3. Trace to SVG
-Ensure `potrace` is installed:
-
-```bash
-potrace tmp/icons/my-new-icon.pbm --svg --flat -o src/assets/icons/my-new-icon.svg
+```text
+Use $custom-icons to create four cohesive geometric navigation icons as #2563EB SVGs.
 ```
 
-### 4. Optimize
-Minify the SVG:
+The skill infers routine defaults, chooses a traced-vector or transparent-raster branch, keeps inspectable intermediates under `tmp/custom-icons/`, and validates every final asset. See [SKILL.md](skills/SKILL.md) for the core workflow and `skills/references/` for vector and raster instructions.
+
+## Processing requirements
+
+- Python 3 and Pillow for all bundled image scripts.
+- Potrace for the traced-SVG branch.
+- SVGO, run through `bunx svgo` or a compatible local installation, for SVG optimization.
+
+The scripts report missing dependencies explicitly. Their paths are resolved from the installed skill directory; outputs stay in the user's target project.
+
+### Trace a prepared source manually
 
 ```bash
-bunx svgo src/assets/icons/my-new-icon.svg --multipass
+python3 skills/scripts/crop_and_trace.py source.png tmp/custom-icons/example example
+potrace tmp/custom-icons/example/example.pbm \
+  --svg --flat --tight \
+  -o tmp/custom-icons/example/example.trace.svg
+python3 skills/scripts/normalize_svg_icon.py \
+  --input tmp/custom-icons/example/example.trace.svg \
+  --out tmp/custom-icons/example/example.normalized.svg \
+  --canvas-size 24 --padding 2
+bunx svgo tmp/custom-icons/example/example.normalized.svg \
+  --output tmp/custom-icons/example/example.svg --multipass
+python3 skills/scripts/validate_icon.py tmp/custom-icons/example/example.svg
+```
+
+### Remove a chroma-key background manually
+
+```bash
+python3 skills/scripts/remove_chroma_key.py \
+  --input source.png \
+  --out tmp/custom-icons/example/example.png \
+  --auto-key border --soft-matte --spill-cleanup \
+  --trim --padding 12
+python3 skills/scripts/validate_icon.py \
+  tmp/custom-icons/example/example.png \
+  --require-transparent-corners
 ```
 
 ## 📂 Structure
 
 - `skills/SKILL.md`: Core logic and instructions for the AI agent.
+- `skills/references/`: Vector and raster branch guidance.
 - `skills/scripts/`: Processing utilities used by the skill.
-- `readme-assets/icons/`: Categorized README reference gallery.
+- `readme-assets/icons/`: Example outputs shown only in this README.
 
 ---
 
 ## 🖼 Reference Gallery
 
-Explore the different styles supported by this skill:
+These are showcase outputs created with the skill. They demonstrate its capabilities and are not loaded or required when the skill runs.
 
 ### 💎 Premium (Strategy A)
 *Monoline, elegant, thin strokes.*

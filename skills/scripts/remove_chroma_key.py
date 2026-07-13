@@ -27,12 +27,7 @@ def _die(message: str, code: int = 1) -> None:
 
 
 def _dependency_hint(package: str) -> str:
-    return (
-        "Activate the repo-selected environment first, then install it with "
-        f"`uv pip install {package}`. If this repo uses a local virtualenv, start with "
-        "`source .venv/bin/activate`; otherwise use this repo's configured shared fallback "
-        "environment."
-    )
+    return f"Install the Python package '{package}' in the active environment."
 
 
 def _load_pillow():
@@ -69,9 +64,11 @@ def _validate_args(args: argparse.Namespace) -> None:
         _die("--edge-feather must be between 0 and 64.")
     if args.edge_contract < 0 or args.edge_contract > 16:
         _die("--edge-contract must be between 0 and 16.")
+    if args.padding < 0:
+        _die("--padding must be zero or greater.")
 
     src = Path(args.input)
-    if not src.exists():
+    if not src.is_file():
         _die(f"Input image not found: {src}")
 
     out = Path(args.out)
@@ -246,16 +243,57 @@ def _apply_edge_feather(image, radius: float):
     if radius == 0:
         return image
 
-    _, ImageFilter = _load_pillow()
+    Image, ImageFilter = _load_pillow()
+    from PIL import ImageChops
+
     alpha = image.getchannel("A")
-    alpha = alpha.filter(ImageFilter.GaussianBlur(radius=radius))
-    image.putalpha(alpha)
-    return image
+    blur = ImageFilter.GaussianBlur(radius=radius)
+    feathered_alpha = alpha.filter(blur)
+    premultiplied = [
+        ImageChops.multiply(channel, alpha).filter(blur)
+        for channel in image.convert("RGB").split()
+    ]
+    premultiplied_image = Image.merge(
+        "RGBA", (*premultiplied, feathered_alpha)
+    )
+    pixels = premultiplied_image.load()
+    width, height = premultiplied_image.size
+    for y in range(height):
+        for x in range(width):
+            red, green, blue, output_alpha = pixels[x, y]
+            if output_alpha == 0:
+                pixels[x, y] = (0, 0, 0, 0)
+                continue
+            pixels[x, y] = (
+                _clamp_channel((red * 255.0) / output_alpha),
+                _clamp_channel((green * 255.0) / output_alpha),
+                _clamp_channel((blue * 255.0) / output_alpha),
+                output_alpha,
+            )
+    return premultiplied_image
+
+
+def _trim_transparent(image, padding: int):
+    bbox = image.getchannel("A").getbbox()
+    if bbox is None:
+        _die("The processed image is fully transparent; no icon subject remains.")
+    left, top, right, bottom = bbox
+    return image.crop(
+        (
+            max(0, left - padding),
+            max(0, top - padding),
+            min(image.width, right + padding),
+            min(image.height, bottom + padding),
+        )
+    )
 
 
 def _encode_image(image, output_format: str) -> bytes:
     out = BytesIO()
-    image.save(out, format=output_format.upper())
+    if output_format.upper() == "WEBP":
+        image.save(out, format="WEBP", lossless=True, quality=100, method=6)
+    else:
+        image.save(out, format="PNG", optimize=True)
     return out.getvalue()
 
 
@@ -327,8 +365,11 @@ def _remove_chroma_key(args: argparse.Namespace) -> None:
     src = Path(args.input)
     out = Path(args.out)
 
-    with Image.open(src) as image:
-        rgba = image.convert("RGBA")
+    try:
+        with Image.open(src) as image:
+            rgba = image.convert("RGBA")
+    except OSError as error:
+        _die(f"Could not read input image {src}: {error}")
     key = (
         _sample_border_key(rgba, args.auto_key)
         if args.auto_key != "none"
@@ -346,6 +387,10 @@ def _remove_chroma_key(args: argparse.Namespace) -> None:
     )
     rgba = _contract_alpha(rgba, args.edge_contract)
     rgba = _apply_edge_feather(rgba, args.edge_feather)
+    if rgba.getchannel("A").getbbox() is None:
+        _die("The processed image is fully transparent; no icon subject remains.")
+    if args.trim:
+        rgba = _trim_transparent(rgba, args.padding)
 
     total, transparent_after, partial_after = _alpha_counts(rgba)
 
@@ -412,6 +457,17 @@ def _build_parser() -> argparse.ArgumentParser:
         type=int,
         default=0,
         help="Shrink the visible alpha matte by this many pixels before feathering.",
+    )
+    parser.add_argument(
+        "--trim",
+        action="store_true",
+        help="Crop transparent outer pixels after matte processing.",
+    )
+    parser.add_argument(
+        "--padding",
+        type=int,
+        default=12,
+        help="Transparent source pixels retained around the trimmed subject (default: 12).",
     )
     parser.add_argument(
         "--spill-cleanup",

@@ -1,11 +1,11 @@
 {
   "name": "custom-icons-skill",
   "version": "1.0.0",
-  "description": "Professional workflow for creating bespoke vector icons.",
+  "description": "Agent skill for creating native or traced SVG and transparent raster icons.",
   "scripts": {
-    "optimize": "svgo src/assets/icons/*.svg --multipass"
+    "optimize": "svgo -rf readme-assets/icons -o readme-assets/icons --multipass"
   },
   "devDependencies": {
-    "svgo": "^3.0.0"
+    "svgo": "^4.0.1"
   }
 }
