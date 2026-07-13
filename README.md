@@ -1,8 +1,8 @@
 # 🎨 Custom Icons Skill
 
 ![Skill](https://img.shields.io/badge/Skill-Custom%20Icons-7c3aed?style=for-the-badge&logo=sparkfun&logoColor=white)
-![Codex](https://img.shields.io/badge/Tested%20in-Codex-111827?style=for-the-badge&logo=openai&logoColor=white)
-![Antigravity](https://img.shields.io/badge/Tested%20in-Antigravity-4285f4?style=for-the-badge&logo=google&logoColor=white)
+<a href="https://chatgpt.com/" title="Tested in Codex (ChatGPT)"><img src="readme-assets/badges/codex.svg" alt="Tested in Codex (ChatGPT)" height="32"></a>
+<a href="https://antigravity.google/" title="Tested in Google Antigravity"><img src="readme-assets/badges/antigravity.svg" alt="Tested in Google Antigravity" height="32"></a>
 ![Icons](https://img.shields.io/badge/Output-SVG%20%2B%20PNG-10b981?style=for-the-badge&logo=svg&logoColor=white)
 
 A specialized agent skill for creating cohesive custom icons as native or traced SVGs and transparent PNG/WebP assets. It combines explicit format routing, reusable generation prompts, deterministic processing scripts, and structural plus visual validation.
@@ -82,6 +82,22 @@ python3 skills/scripts/validate_icon.py \
 ## 🖼 Reference Gallery
 
 These are showcase outputs created with the skill. They demonstrate its capabilities and are not loaded or required when the skill runs.
+
+### 🧪 Blind 10-agent evaluation
+
+Ten fresh agents were each given the `$custom-icons` skill, one original concept, and a shared visual-family brief. They had no conversation history and could not inspect the existing gallery or one another's output. The evaluator supplied the concepts and style direction, then reviewed, validated, and assembled the final assets; each agent executed its own icon workflow.
+
+- Icons 01–07 are transparent raster assets created with image generation, a flat chroma-key background, local alpha cleanup, and `1024×1024` canvas normalization.
+- Icons 08–10 are **native colored SVGs authored directly by the agents** with vector paths, shapes, fills, and gradients. They were not generated as raster images and were not traced.
+- Every final asset passed individual validation and matching-canvas validation for its format group.
+
+[Open the detailed evaluation and individual concepts](readme-assets/icons/custom-showcase/SHOWCASE.md).
+
+
+| | | | | |
+| :---: | :---: | :---: | :---: | :---: |
+| <img src="./readme-assets/icons/custom-showcase/01-chronobloom.png" width="180" /><br>**Chronobloom** | <img src="./readme-assets/icons/custom-showcase/02-stormkeeper.png" width="180" /><br>**Stormkeeper** | <img src="./readme-assets/icons/custom-showcase/03-echo-forge.png" width="180" /><br>**Echo Forge** | <img src="./readme-assets/icons/custom-showcase/04-memory-orchard.png" width="180" /><br>**Memory Orchard** | <img src="./readme-assets/icons/custom-showcase/05-tide-compass.png" width="180" /><br>**Tide Compass** |
+| <img src="./readme-assets/icons/custom-showcase/06-dream-relay.png" width="180" /><br>**Dream Relay** | <img src="./readme-assets/icons/custom-showcase/07-gravity-loom.png" width="180" /><br>**Gravity Loom** | <img src="./readme-assets/icons/custom-showcase/08-kindness-engine.svg" width="180" /><br>**Kindness Engine · SVG** | <img src="./readme-assets/icons/custom-showcase/09-idea-cistern.svg" width="180" /><br>**Idea Cistern · SVG** | <img src="./readme-assets/icons/custom-showcase/10-quiet-signal.svg" width="180" /><br>**Quiet Signal · SVG** |
 
 ### 💎 Premium (Strategy A)
 *Monoline, elegant, thin strokes.*

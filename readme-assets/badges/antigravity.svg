@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="218" height="32" viewBox="0 0 218 32" role="img" aria-label="Tested in Antigravity">
+  <title>Tested in Antigravity</title>
+  <defs>
+    <linearGradient id="antigravity-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f2b5f"/>
+      <stop offset=".52" stop-color="#123c91"/>
+      <stop offset="1" stop-color="#5b21b6"/>
+    </linearGradient>
+    <linearGradient id="antigravity-mark" x1="0" x2="1" y1="1" y2="0">
+      <stop offset="0" stop-color="#60a5fa"/>
+      <stop offset=".55" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#f9a8d4"/>
+    </linearGradient>
+  </defs>
+  <rect width="218" height="32" rx="8" fill="url(#antigravity-bg)"/>
+  <rect x="1" y="1" width="216" height="30" rx="7" fill="none" stroke="#93c5fd" stroke-opacity=".65"/>
+  <path transform="translate(8 5.7) scale(.86)" fill="url(#antigravity-mark)" d="M21.751 22.607c1.34 1.005 3.35.335 1.508-1.508C17.73 15.74 18.904 1 12.037 1 5.17 1 6.342 15.74.815 21.1c-2.01 2.009.167 2.511 1.507 1.506 5.192-3.517 4.857-9.714 9.715-9.714 4.857 0 4.522 6.197 9.714 9.715z"/>
+  <text x="39" y="12.5" fill="#bfdbfe" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="700" letter-spacing="1.1">TESTED IN</text>
+  <text x="39" y="24" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="800" letter-spacing="1.4">ANTIGRAVITY</text>
+</svg>

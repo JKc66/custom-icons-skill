@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none">
+  <title>Kindness Engine</title>
+  <desc>Two asymmetric glazed ceramic paddles cooperatively engage an offset brushed brass gear, which supports a small coral sprout.</desc>
+  <defs>
+    <linearGradient id="ke-teal-main" x1="148" y1="145" x2="492" y2="650" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#52D1C5"/>
+      <stop offset="0.32" stop-color="#179E9B"/>
+      <stop offset="0.72" stop-color="#087275"/>
+      <stop offset="1" stop-color="#04555D"/>
+    </linearGradient>
+    <linearGradient id="ke-teal-side" x1="220" y1="260" x2="508" y2="680" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D7779"/>
+      <stop offset="1" stop-color="#03464F"/>
+    </linearGradient>
+    <linearGradient id="ke-teal-shine" x1="167" y1="154" x2="362" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D6FFF7" stop-opacity="0.88"/>
+      <stop offset="0.46" stop-color="#8DEBE0" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#4FD0C4" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ke-coral-main" x1="687" y1="596" x2="878" y2="902" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF9B85"/>
+      <stop offset="0.38" stop-color="#F46F61"/>
+      <stop offset="0.78" stop-color="#D94B4C"/>
+      <stop offset="1" stop-color="#B93643"/>
+    </linearGradient>
+    <linearGradient id="ke-coral-side" x1="721" y1="630" x2="881" y2="911" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C94B4D"/>
+      <stop offset="1" stop-color="#8F2838"/>
+    </linearGradient>
+    <linearGradient id="ke-coral-shine" x1="745" y1="690" x2="862" y2="874" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD5C8" stop-opacity="0.8"/>
+      <stop offset="0.52" stop-color="#FFB29E" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#FF8D79" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ke-brass-face" x1="471" y1="383" x2="793" y2="710" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF0A5"/>
+      <stop offset="0.18" stop-color="#EBC45D"/>
+      <stop offset="0.51" stop-color="#C68F2B"/>
+      <stop offset="0.72" stop-color="#F2CB68"/>
+      <stop offset="1" stop-color="#A86E1D"/>
+    </linearGradient>
+    <linearGradient id="ke-brass-side" x1="560" y1="440" x2="760" y2="775" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B8781F"/>
+      <stop offset="0.56" stop-color="#8D5716"/>
+      <stop offset="1" stop-color="#61380F"/>
+    </linearGradient>
+    <radialGradient id="ke-hub" cx="0" cy="0" r="1" gradientTransform="translate(591 532) rotate(43) scale(100 88)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#55D8CB"/>
+      <stop offset="0.57" stop-color="#0D8585"/>
+      <stop offset="1" stop-color="#034D57"/>
+    </radialGradient>
+    <linearGradient id="ke-collar" x1="663" y1="349" x2="732" y2="412" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE693"/>
+      <stop offset="0.46" stop-color="#C68D29"/>
+      <stop offset="1" stop-color="#7D4A13"/>
+    </linearGradient>
+    <linearGradient id="ke-leaf-one" x1="691" y1="212" x2="748" y2="301" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFB09A"/>
+      <stop offset="0.53" stop-color="#F46E62"/>
+      <stop offset="1" stop-color="#C84249"/>
+    </linearGradient>
+    <linearGradient id="ke-leaf-two" x1="723" y1="245" x2="815" y2="287" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFAA91"/>
+      <stop offset="0.58" stop-color="#EC665D"/>
+      <stop offset="1" stop-color="#B93743"/>
+    </linearGradient>
+    <linearGradient id="ke-rim-glint" x1="458" y1="400" x2="738" y2="697" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7C6" stop-opacity="0.92"/>
+      <stop offset="0.26" stop-color="#FFF0A0" stop-opacity="0.28"/>
+      <stop offset="0.55" stop-color="#FFF0A0" stop-opacity="0"/>
+      <stop offset="1" stop-color="#70400D" stop-opacity="0.35"/>
+    </linearGradient>
+    <filter id="ke-shadow" x="-30%" y="-30%" width="170%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="ke-soften" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <clipPath id="ke-gear-face-clip">
+      <ellipse cx="620" cy="542" rx="167" ry="137"/>
+    </clipPath>
+  </defs>
+
+  <!-- Large sea-glass paddle: a broad asymmetric blade tapering into the left drive arm. -->
+  <path d="M189 159C152 182 130 225 133 270C136 326 166 376 212 399C232 409 252 402 267 386L306 344L511 570C523 584 545 586 560 574L579 558L550 530L337 303L304 231C290 199 267 172 238 157C220 147 203 149 189 159Z" fill="#033F48" opacity="0.24" transform="translate(17 27)"/>
+  <path d="M189 159C152 182 130 225 133 270C136 326 166 376 212 399C232 409 252 402 267 386L306 344L511 570C523 584 545 586 560 574L579 558L550 530L337 303L304 231C290 199 267 172 238 157C220 147 203 149 189 159Z" fill="url(#ke-teal-side)" transform="translate(11 18)"/>
+  <path d="M189 141C152 164 130 207 133 252C136 308 166 358 212 381C232 391 252 384 267 368L306 326L511 552C523 566 545 568 560 556L579 540L550 512L337 285L304 213C290 181 267 154 238 139C220 129 203 131 189 141Z" fill="url(#ke-teal-main)"/>
+  <path d="M193 160C168 180 153 213 154 247C155 282 168 315 191 338C207 354 228 366 242 357C252 351 262 336 272 321L303 280L281 220C269 190 248 165 226 155C211 148 201 153 193 160Z" fill="url(#ke-teal-shine)"/>
+  <path d="M170 241C167 207 181 178 204 164C214 158 224 157 234 160" stroke="#E4FFF9" stroke-width="13" stroke-linecap="round" opacity="0.5"/>
+  <path d="M285 310L505 551" stroke="#9AF2E7" stroke-width="11" stroke-linecap="round" opacity="0.18"/>
+  <path d="M203 379C225 389 247 380 265 360" stroke="#004F59" stroke-width="9" stroke-linecap="round" opacity="0.42"/>
+
+  <!-- Smaller coral paddle: compact blade and short drive arm from the lower right. -->
+  <path d="M684 610L726 590L801 715C813 711 826 709 838 712C872 719 898 745 909 781C920 818 913 860 886 886C860 911 820 916 783 899C748 882 722 852 715 820C712 805 715 787 720 773L659 654C651 639 657 622 671 614Z" fill="#732438" opacity="0.28" transform="translate(16 26)"/>
+  <path d="M684 610L726 590L801 715C813 711 826 709 838 712C872 719 898 745 909 781C920 818 913 860 886 886C860 911 820 916 783 899C748 882 722 852 715 820C712 805 715 787 720 773L659 654C651 639 657 622 671 614Z" fill="url(#ke-coral-side)" transform="translate(10 17)"/>
+  <path d="M684 593L726 573L801 698C813 694 826 692 838 695C872 702 898 728 909 764C920 801 913 843 886 869C860 894 820 899 783 882C748 865 722 835 715 803C712 788 715 770 720 756L659 637C651 622 657 605 671 597Z" fill="url(#ke-coral-main)"/>
+  <path d="M797 721C816 708 840 713 859 728C882 746 893 776 889 806C885 837 866 858 844 863C825 868 801 859 784 842C767 825 756 801 760 778C763 754 778 733 797 721Z" fill="url(#ke-coral-shine)"/>
+  <path d="M814 718C837 711 861 726 875 749" stroke="#FFE2D8" stroke-width="12" stroke-linecap="round" opacity="0.46"/>
+  <path d="M678 616L739 734" stroke="#FFD0C2" stroke-width="10" stroke-linecap="round" opacity="0.19"/>
+  <path d="M790 876C821 892 853 886 876 866" stroke="#962E3E" stroke-width="9" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Brass gear extrusion: the repeated offset form makes the isometric thickness readable. -->
+  <polygon points="579,450.3 590.2,446.5 587.3,407.9 647.4,399.5 655.2,437.3 667.1,437.9 678.9,439.1 699.8,403.5 755.3,420.8 738.9,457.9 748.6,463.3 757.7,469.3 796.8,446.1 832.8,484.6 796.7,510.9 801.4,519.7 805.5,528.9 852.3,524.3 859.2,573.6 812.9,582.2 811.6,592 809.4,601.8 851.5,617.2 827.4,664.1 783.4,652.6 776.3,660.8 768.6,668.7 794.5,699.8 745.9,731.8 716,703.3 705,707.7 693.8,711.5 696.7,750.1 636.6,758.5 628.8,720.7 616.9,720.1 605.1,718.9 584.2,754.5 528.7,737.2 545.1,700.1 535.4,694.7 526.3,688.7 487.2,711.9 451.2,673.4 487.3,647.1 482.6,638.3 478.5,629.1 431.7,633.7 424.8,584.4 471.1,575.8 472.4,566 474.6,556.2 432.5,540.8 456.6,493.9 500.6,505.4 507.7,497.2 515.4,489.3 489.5,458.2 538.1,426.2 568,454.7" fill="#744411" stroke="#5F370E" stroke-width="7" stroke-linejoin="round"/>
+  <ellipse cx="642" cy="579" rx="171" ry="140" fill="url(#ke-brass-side)" transform="rotate(-8 642 579)"/>
+
+  <!-- Front gear and engraved mechanical face. -->
+  <polygon points="557,413.3 568.2,409.5 565.3,370.9 625.4,362.5 633.2,400.3 645.1,400.9 656.9,402.1 677.8,366.5 733.3,383.8 716.9,420.9 726.6,426.3 735.7,432.3 774.8,409.1 810.8,447.6 774.7,473.9 779.4,482.7 783.5,491.9 830.3,487.3 837.2,536.6 790.9,545.2 789.6,555 787.4,564.8 829.5,580.2 805.4,627.1 761.4,615.6 754.3,623.8 746.6,631.7 772.5,662.8 723.9,694.8 694,666.3 683,670.7 671.8,674.5 674.7,713.1 614.6,721.5 606.8,683.7 594.9,683.1 583.1,681.9 562.2,717.5 506.7,700.2 523.1,663.1 513.4,657.7 504.3,651.7 465.2,674.9 429.2,636.4 465.3,610.1 460.6,601.3 456.5,592.1 409.7,596.7 402.8,547.4 449.1,538.8 450.4,529 452.6,519.2 410.5,503.8 434.6,456.9 478.6,468.4 485.7,460.2 493.4,452.3 467.5,421.2 516.1,389.2 546,417.7" fill="#C78F28" stroke="#8C5817" stroke-width="6" stroke-linejoin="round"/>
+  <ellipse cx="620" cy="542" rx="171" ry="140" fill="url(#ke-brass-face)" transform="rotate(-8 620 542)"/>
+  <ellipse cx="620" cy="542" rx="151" ry="124" fill="#9D691C" opacity="0.5"/>
+  <ellipse cx="620" cy="535" rx="144" ry="118" fill="url(#ke-brass-face)"/>
+  <g clip-path="url(#ke-gear-face-clip)" opacity="0.23" stroke="#7D5118" stroke-width="6">
+    <path d="M435 441L779 712"/>
+    <path d="M462 411L806 682"/>
+    <path d="M494 389L826 650"/>
+    <path d="M449 493L748 728"/>
+    <path d="M472 560L681 725"/>
+  </g>
+  <ellipse cx="620" cy="535" rx="144" ry="118" fill="url(#ke-rim-glint)" opacity="0.58"/>
+
+  <!-- Six inset spokes bind the outer gear to a glazed teal hub. -->
+  <g stroke="#865618" stroke-width="27" stroke-linecap="round" opacity="0.62">
+    <path d="M620 443L620 485"/>
+    <path d="M705 477L669 502"/>
+    <path d="M711 581L674 562"/>
+    <path d="M620 630L620 586"/>
+    <path d="M531 583L569 561"/>
+    <path d="M531 488L570 508"/>
+  </g>
+  <g stroke="#F8D878" stroke-width="10" stroke-linecap="round" opacity="0.42">
+    <path d="M620 443L620 481"/>
+    <path d="M704 477L672 499"/>
+    <path d="M709 580L676 563"/>
+  </g>
+  <ellipse cx="620" cy="551" rx="69" ry="58" fill="#674315" opacity="0.6"/>
+  <ellipse cx="620" cy="535" rx="72" ry="59" fill="url(#ke-hub)" stroke="#F4D16D" stroke-width="12"/>
+  <polygon points="620,504 647,520 647,551 620,567 593,551 593,520" fill="url(#ke-collar)" stroke="#714414" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M608 517L620 511L633 519" stroke="#FFF0A6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+
+  <!-- Ceramic paddle noses ride on separate points of the same gear. -->
+  <path d="M463 509L514 480C525 474 539 476 548 485L570 508L531 566L480 556C465 553 455 540 456 525Z" fill="#053F49" opacity="0.4" transform="translate(6 12)"/>
+  <path d="M463 497L514 468C525 462 539 464 548 473L570 496L531 554L480 544C465 541 455 528 456 513Z" fill="url(#ke-teal-main)" stroke="#E6C15B" stroke-width="8"/>
+  <path d="M480 500L520 480" stroke="#D5FFF7" stroke-width="8" stroke-linecap="round" opacity="0.36"/>
+  <circle cx="531" cy="510" r="18" fill="#F4D675" stroke="#8B5918" stroke-width="7"/>
+
+  <path d="M700 586L742 569C753 565 766 571 772 582L789 615C795 628 790 643 778 650L735 676L692 637Z" fill="#842B3B" opacity="0.38" transform="translate(5 11)"/>
+  <path d="M700 575L742 558C753 554 766 560 772 571L789 604C795 617 790 632 778 639L735 665L692 626Z" fill="url(#ke-coral-main)" stroke="#E4B94D" stroke-width="8"/>
+  <path d="M728 574L756 567" stroke="#FFE0D5" stroke-width="8" stroke-linecap="round" opacity="0.42"/>
+  <circle cx="735" cy="618" r="17" fill="#F4D675" stroke="#8B5918" stroke-width="7"/>
+
+  <!-- Brass growth collar and the small coral shoot. -->
+  <path d="M664 415C664 399 676 387 691 385L718 383C734 383 747 394 749 410L752 434L667 440Z" fill="#704311" opacity="0.65" transform="translate(5 10)"/>
+  <path d="M664 403C664 387 676 375 691 373L718 371C734 371 747 382 749 398L752 422L667 428Z" fill="url(#ke-collar)" stroke="#8D5818" stroke-width="6"/>
+  <path d="M681 386C694 378 719 377 733 385" stroke="#FFF0A6" stroke-width="8" stroke-linecap="round" opacity="0.5"/>
+  <path d="M706 379C705 342 703 306 714 270C721 248 733 232 746 220" stroke="#8C2D3E" stroke-width="18" stroke-linecap="round" opacity="0.5" transform="translate(5 7)"/>
+  <path d="M706 376C705 339 703 303 714 267C721 245 733 229 746 217" stroke="#F06B61" stroke-width="16" stroke-linecap="round"/>
+  <path d="M721 275C697 262 685 241 689 217C692 201 702 188 716 184C736 195 747 214 744 235C742 252 733 266 721 275Z" fill="#9B3140" opacity="0.45" transform="translate(5 7)"/>
+  <path d="M721 268C697 255 685 234 689 210C692 194 702 181 716 177C736 188 747 207 744 228C742 245 733 259 721 268Z" fill="url(#ke-leaf-one)"/>
+  <path d="M713 198C719 211 723 227 721 248" stroke="#FFD4C7" stroke-width="7" stroke-linecap="round" opacity="0.38"/>
+  <path d="M734 286C750 260 774 247 801 250C818 252 831 262 838 275C828 297 807 311 785 311C763 310 745 300 734 286Z" fill="#972F40" opacity="0.45" transform="translate(5 7)"/>
+  <path d="M734 279C750 253 774 240 801 243C818 245 831 255 838 268C828 290 807 304 785 304C763 303 745 293 734 279Z" fill="url(#ke-leaf-two)"/>
+  <path d="M756 275C776 266 796 261 817 264" stroke="#FFD4C7" stroke-width="7" stroke-linecap="round" opacity="0.36"/>
+  <circle cx="707" cy="376" r="8" fill="#FFE99A" opacity="0.75"/>
+</svg>

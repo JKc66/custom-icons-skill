@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Idea Cistern, a ceramic vessel transforming brass sparks into a coral shoot">
+  <defs>
+    <linearGradient id="g-ceramic-front" x1="245" y1="430" x2="718" y2="840" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#43BDB5"/>
+      <stop offset="0.34" stop-color="#178F8D"/>
+      <stop offset="0.72" stop-color="#0C696E"/>
+      <stop offset="1" stop-color="#074D58"/>
+    </linearGradient>
+    <linearGradient id="g-ceramic-side" x1="578" y1="465" x2="788" y2="780" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#188B89"/>
+      <stop offset="0.55" stop-color="#08616A"/>
+      <stop offset="1" stop-color="#043E4B"/>
+    </linearGradient>
+    <linearGradient id="g-ceramic-light" x1="315" y1="250" x2="612" y2="470" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#79DED1"/>
+      <stop offset="0.36" stop-color="#30AAA5"/>
+      <stop offset="1" stop-color="#0B6871"/>
+    </linearGradient>
+    <linearGradient id="g-rim" x1="303" y1="252" x2="616" y2="392" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#A3EFE0"/>
+      <stop offset="0.2" stop-color="#54C7BD"/>
+      <stop offset="0.62" stop-color="#168A8B"/>
+      <stop offset="1" stop-color="#07535F"/>
+    </linearGradient>
+    <radialGradient id="g-throat-inner" cx="0" cy="0" r="1" gradientTransform="translate(444 322) rotate(21) scale(186 124)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#052D3A"/>
+      <stop offset="0.55" stop-color="#064E5B"/>
+      <stop offset="1" stop-color="#12837F"/>
+    </radialGradient>
+    <linearGradient id="g-channel" x1="650" y1="575" x2="879" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#07515D"/>
+      <stop offset="0.42" stop-color="#168988"/>
+      <stop offset="0.78" stop-color="#4CC4B8"/>
+      <stop offset="1" stop-color="#8BE2D3"/>
+    </linearGradient>
+    <linearGradient id="g-channel-shadow" x1="657" y1="609" x2="871" y2="527" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#033B49"/>
+      <stop offset="1" stop-color="#087077"/>
+    </linearGradient>
+    <linearGradient id="g-brass" x1="365" y1="118" x2="622" y2="303" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF0A5"/>
+      <stop offset="0.28" stop-color="#F5C957"/>
+      <stop offset="0.65" stop-color="#C98524"/>
+      <stop offset="1" stop-color="#7E4216"/>
+    </linearGradient>
+    <linearGradient id="g-brass-edge" x1="378" y1="145" x2="592" y2="276" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7C7"/>
+      <stop offset="0.4" stop-color="#E6AB35"/>
+      <stop offset="1" stop-color="#995015"/>
+    </linearGradient>
+    <linearGradient id="g-coral" x1="772" y1="555" x2="885" y2="296" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B43E4E"/>
+      <stop offset="0.46" stop-color="#EB655F"/>
+      <stop offset="1" stop-color="#FF9A77"/>
+    </linearGradient>
+    <linearGradient id="g-coral-edge" x1="804" y1="514" x2="875" y2="324" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8E2E43"/>
+      <stop offset="1" stop-color="#D94F58"/>
+    </linearGradient>
+    <linearGradient id="g-glaze-sheen" x1="264" y1="470" x2="518" y2="713" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E3FFF6" stop-opacity="0.72"/>
+      <stop offset="0.42" stop-color="#A4EEE0" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#79D8D1" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="g-shadow" cx="0" cy="0" r="1" gradientTransform="translate(524 854) rotate(1) scale(337 64)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#073840" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#073840" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="f-soft-shadow" x="-20%" y="-30%" width="140%" height="170%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="11"/>
+    </filter>
+    <filter id="f-spark-glow" x="-80%" y="-80%" width="260%" height="260%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="clip-body">
+      <path d="M315 428C259 452 225 517 221 625C216 748 289 829 443 857C591 884 711 838 751 738L786 637C811 565 779 489 713 452C620 399 401 391 315 428Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- soft grounding, leaving the canvas transparent -->
+  <ellipse id="ground-shadow" cx="526" cy="857" rx="337" ry="64" fill="url(#g-shadow)" filter="url(#f-soft-shadow)"/>
+
+  <!-- the single coral outcome, behind the channel lip but in front of its tube -->
+  <g id="coral-shoot">
+    <path d="M812 553C826 521 828 490 823 459C817 420 822 387 846 357C856 345 864 328 866 310" fill="none" stroke="url(#g-coral-edge)" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M808 546C820 515 819 486 815 459C810 420 817 382 842 351C851 340 858 326 860 312" fill="none" stroke="url(#g-coral)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M841 373C821 357 812 335 818 318C838 319 855 332 860 351C860 360 854 369 841 373Z" fill="url(#g-coral)" stroke="#A93849" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M859 327C844 304 845 279 859 265C879 277 888 298 881 318C876 328 868 332 859 327Z" fill="url(#g-coral)" stroke="#A93849" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M836 403C852 386 874 379 890 387C887 407 872 423 852 425C843 424 837 416 836 403Z" fill="#F27768" stroke="#A93849" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M858 286C866 294 869 303 868 312" fill="none" stroke="#FFD1AD" stroke-width="7" stroke-linecap="round" opacity="0.68"/>
+    <path d="M828 420C823 443 825 467 828 483" fill="none" stroke="#FFC0A0" stroke-width="8" stroke-linecap="round" opacity="0.58"/>
+  </g>
+
+  <!-- ceramic side channel: an asymmetric outlet from the cistern -->
+  <g id="side-channel">
+    <path d="M645 576C695 570 748 548 800 517C835 496 869 497 884 519C901 544 882 573 848 585C784 607 724 624 667 624Z" fill="url(#g-channel-shadow)"/>
+    <path d="M644 548C700 546 753 526 803 495C837 474 871 474 887 496C903 518 887 544 853 559C790 586 727 601 657 596Z" fill="url(#g-channel)" stroke="#064C59" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M804 495C837 474 871 474 887 496C903 518 887 544 853 559C828 568 806 559 799 541C792 523 793 505 804 495Z" fill="#075763"/>
+    <ellipse cx="849" cy="518" rx="48" ry="28" transform="rotate(-23 849 518)" fill="#063B49" stroke="#62D2C4" stroke-width="12"/>
+    <path d="M680 558C727 551 767 534 800 514" fill="none" stroke="#B6F4E7" stroke-width="12" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- main cistern body -->
+  <g id="cistern-body">
+    <path d="M315 428C259 452 225 517 221 625C216 748 289 829 443 857C591 884 711 838 751 738L786 637C811 565 779 489 713 452C620 399 401 391 315 428Z" fill="url(#g-ceramic-front)" stroke="#063E4B" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M589 414C647 421 696 434 729 457C790 500 805 566 783 637L750 741C725 807 666 850 574 861C642 823 661 753 673 685C689 593 680 498 589 414Z" fill="url(#g-ceramic-side)" opacity="0.92"/>
+    <path d="M300 458C257 500 245 558 247 633C249 730 302 792 405 821C467 839 523 839 565 823C484 809 427 775 394 719C354 650 357 547 398 439C359 440 328 446 300 458Z" fill="url(#g-glaze-sheen)" clip-path="url(#clip-body)"/>
+    <path d="M277 511C256 552 257 607 263 648" fill="none" stroke="#D1FFF3" stroke-width="15" stroke-linecap="round" opacity="0.42"/>
+    <path d="M289 483C310 461 335 451 360 445" fill="none" stroke="#E5FFF8" stroke-width="12" stroke-linecap="round" opacity="0.58"/>
+    <path d="M311 752C350 793 420 817 486 824" fill="none" stroke="#5CC9C0" stroke-width="10" stroke-linecap="round" opacity="0.3"/>
+    <path d="M711 482C745 514 759 558 751 610" fill="none" stroke="#309D9B" stroke-width="10" stroke-linecap="round" opacity="0.44"/>
+    <!-- inset seam shows where the transformation channel begins -->
+    <path d="M647 544C673 549 690 567 687 591C684 616 661 633 632 629" fill="none" stroke="#043D4B" stroke-width="19" stroke-linecap="round" opacity="0.75"/>
+    <path d="M646 548C665 552 677 565 675 581" fill="none" stroke="#51C7BB" stroke-width="7" stroke-linecap="round" opacity="0.55"/>
+  </g>
+
+  <!-- neck that couples the spiral throat to the reservoir -->
+  <g id="throat-neck">
+    <path d="M416 407C432 385 464 373 506 376C549 379 582 397 594 424L612 492C619 523 596 548 550 557C500 567 448 548 436 518L405 454C397 437 401 420 416 407Z" fill="url(#g-ceramic-light)" stroke="#064957" stroke-width="9"/>
+    <path d="M431 413C452 399 481 395 508 400" fill="none" stroke="#CBFFF3" stroke-width="12" stroke-linecap="round" opacity="0.55"/>
+    <path d="M574 414C586 437 589 468 587 496" fill="none" stroke="#075361" stroke-width="15" stroke-linecap="round" opacity="0.62"/>
+  </g>
+
+  <!-- spiral catching throat -->
+  <g id="spiral-throat">
+    <path d="M305 318C313 247 385 194 482 191C576 188 649 238 662 306C677 381 607 438 516 449C421 460 329 425 306 366C300 351 299 334 305 318Z" fill="url(#g-rim)" stroke="#064955" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M332 319C345 265 405 226 481 226C556 226 614 263 623 312C632 360 582 399 517 410C449 421 381 396 361 358C344 325 368 286 417 269C462 253 520 267 543 296C563 321 547 351 516 361C487 371 453 361 445 342C439 329 449 315 466 311C481 308 494 313 498 323" fill="none" stroke="url(#g-throat-inner)" stroke-width="66" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- inner spiral ceramic rail gives the throat its unmistakable coiled construction -->
+    <path d="M333 318C348 262 409 224 482 226C555 228 609 263 617 311C624 354 578 390 517 400C454 410 394 388 377 354C363 327 383 297 422 284C458 272 502 282 520 304C534 321 524 339 505 345C488 350 469 344 465 334" fill="none" stroke="#7AD8CC" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+    <path d="M333 318C347 271 394 237 452 228" fill="none" stroke="#E2FFF7" stroke-width="14" stroke-linecap="round" opacity="0.64"/>
+    <path d="M605 285C617 309 617 329 609 348" fill="none" stroke="#9AE6D8" stroke-width="9" stroke-linecap="round" opacity="0.45"/>
+    <!-- gold energy glimpse deep in the throat -->
+    <path d="M494 318L513 332L498 346L480 336Z" fill="url(#g-brass)" filter="url(#f-spark-glow)"/>
+    <path d="M419 269C442 258 471 255 495 260" fill="none" stroke="#E7FFF8" stroke-width="7" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- exactly three angular brass sparks descending toward the throat -->
+  <g id="three-brass-sparks" filter="url(#f-spark-glow)">
+    <path id="spark-left" d="M351 142L401 165L384 198L421 218L361 244L374 205L338 184Z" fill="url(#g-brass)" stroke="#8A4D18" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M361 154L391 168L379 181" fill="none" stroke="#FFF5B7" stroke-width="8" stroke-linecap="round" opacity="0.82"/>
+    <path id="spark-center" d="M482 103L529 123L510 158L545 183L487 202L498 164L465 145Z" fill="url(#g-brass)" stroke="#8A4D18" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M489 115L517 127L505 143" fill="none" stroke="#FFF5B7" stroke-width="8" stroke-linecap="round" opacity="0.82"/>
+    <path id="spark-right" d="M604 143L636 177L608 199L630 231L572 221L596 195L573 168Z" fill="url(#g-brass-edge)" stroke="#8A4D18" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M607 157L625 177L610 187" fill="none" stroke="#FFF5B7" stroke-width="7" stroke-linecap="round" opacity="0.8"/>
+  </g>
+
+  <!-- small glaze accent at the body base -->
+  <path d="M465 850C536 858 603 848 644 824" fill="none" stroke="#0F7379" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+</svg>
